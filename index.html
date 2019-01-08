@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="nav">
+        <button id="changesize">Change Grid Size</button>
+    </div>
+    <div id="container">
+    </div>
+</body>
+<script>
+let size = 8
+const removeElements = (elms) => [...elms].forEach(el => el.remove());
+const btn = document.getElementById('changesize');
+const container = document.getElementById('container');
+const populate = (height, width) => {
+    var grid = document.getElementsByClassName('grid')
+    while(grid[0]) {
+        grid[0].parentNode.removeChild(grid[0]);
+    }
+    
+    for(i=0;i < height * width; i++){
+        let div = document.createElement('div');
+        div.classList = "grid"
+        div.style.border = "1px solid #000"
+        container.appendChild(div)
+        size = width
+        container.style.gridTemplateColumns = `repeat(${size}, 1fr)`
+        container.style.gridTemplateRows = `repeat(w${size}, 1fr)`
+        var gridElement = document.getElementsByClassName('grid');
+            for(let i=0; i < gridElement.length; i++){
+                gridElement[i].addEventListener("mouseover", function() {
+                this.style.backgroundColor = "black"
+    })
+
+}
+
+
+}}
+btn.addEventListener('click', function() {
+    let size = parseInt(prompt("what size board?"));
+    if(typeof size === "number" && size <= 24){
+        populate(size,size)
+    }else{
+        alert("please enter a number under 24")
+    }
+    
+
+})
+
+populate(size,size)
+
+
+
+
+
+
+
+
+</script>
